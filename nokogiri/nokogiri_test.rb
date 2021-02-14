@@ -13,26 +13,25 @@ class NokogiriTest < MiniTest::Test
   #     these tests all reference shows.xml        #
   ##################################################
   def test_list_all_characters
-    skip
     # list of all the characters in all the shows in this document
 
     # every file we'll be reading is locate within the /docs_to_parse directory.
     doc = Nokogiri::XML(File.open('docs_to_parse/shows.xml'))
     # require "pry"; binding.pry
-    # Open up this 'shows.xml' file in your editor, so you can be "reading" the 
+    # Open up this 'shows.xml' file in your editor, so you can be "reading" the
     # html as you parse it with Nokogiri.
-    
+
     # results = doc.xpath('//character')
     results = doc.css('character') # remember, css/xpath selectors are the same
-    
+
     # remember, use pry in here to inspect your results. Use
     # the #to_a method to easily see in your terminal what sort of
     # results you're getting back from Nokogiri, I.E. call:
-    # results.to_a 
+    # results.to_a
     # or
     # doc.xpath('//character')
-    
-    # Expected results will look something like this: 
+
+    # Expected results will look something like this:
     #(Element:0x3fccb9994394 { name = "character", children = [ #(Text "Al Bundy")] }),
     #(Element:0x3fccb9d65f68 { name = "character", children = [ #(Text "Bud Bundy")] }),
     #(Element:0x3fccb9d65ba8 { name = "character", children = [ #(Text "Marcy Darcy")] }),
@@ -70,7 +69,7 @@ class NokogiriTest < MiniTest::Test
 
   def test_get_first_drama_name_in_four_different_ways
     skip
-    # Get the first drama name back in _four_ different ways, 
+    # Get the first drama name back in _four_ different ways,
     # using .css and .at_css
     doc = Nokogiri::XML(File.open('docs_to_parse/shows.xml'))
 
@@ -104,13 +103,13 @@ class NokogiriTest < MiniTest::Test
   def test_get_all_tires_belonging_to_aliceautoparts_using_xpath
     skip
     # might be worth skipping this test. I've not seein this xml name-space thing
-    # used in the wild yet. 
-    
+    # used in the wild yet.
+
     # using xpath, get tires with the XML namespace value `http://alicesautoparts.com/`
     doc = Nokogiri::XML(File.open('docs_to_parse/parts.xml'))
-    # Open up this 'parts.xml' file in your editor, so you can be "reading" the 
+    # Open up this 'parts.xml' file in your editor, so you can be "reading" the
     # html as you parse it with Nokogiri.
-    
+
     results = doc.css('xmlns|tire', xmlns: "http://alicesautoparts.com/")
 
     assert_equal 3, results.count
@@ -162,7 +161,7 @@ class NokogiriTest < MiniTest::Test
     skip
     # get all titles using `xpath`
     doc = Nokogiri::XML(File.open('docs_to_parse/atom.xml'))
-    # Open up this 'atom.xml' file in your editor, so you can be "reading" the 
+    # Open up this 'atom.xml' file in your editor, so you can be "reading" the
     # html as you parse it with Nokogiri.
 
     # results = your code here
@@ -191,7 +190,7 @@ class NokogiriTest < MiniTest::Test
     skip
     # get the full name of the last employee
     doc = Nokogiri::XML(File.open('docs_to_parse/employees.xml'))
-    # Open up this 'employees.xml' file in your editor, so you can be "reading" the 
+    # Open up this 'employees.xml' file in your editor, so you can be "reading" the
     # html as you parse it with Nokogiri.
 
     # results = your code here
@@ -226,8 +225,8 @@ class NokogiriTest < MiniTest::Test
     skip
     # how many links are on the page?
     doc = Nokogiri::XML(File.open('docs_to_parse/josh_works_archive.html'))
-    # Open up this 'josh_works_archive.html' file in your editor, so you can be "reading" the 
-    # html as you parse it with Nokogiri. Also, open it in your browser, so you 
+    # Open up this 'josh_works_archive.html' file in your editor, so you can be "reading" the
+    # html as you parse it with Nokogiri. Also, open it in your browser, so you
     # can wrap your head around it all.
 
     # results = your code here
